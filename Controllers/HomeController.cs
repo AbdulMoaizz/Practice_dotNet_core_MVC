@@ -4,7 +4,7 @@ using System.Diagnostics;
 using WebApp.Models;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace EmployeeMangement.Controllers
 {
     public class HomeController : Controller
     {
@@ -34,7 +34,9 @@ namespace WebApplication1.Controllers
         public ViewResult Details()
         {
             Employee model = _employeeRepository.GetEmployee(1);
-            return View(model);
+            ViewData["Employee"] = model;
+            ViewData["PageTitle"] = "Employee Data";
+            return View();
 
         }
     }
