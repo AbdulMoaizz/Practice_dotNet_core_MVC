@@ -1,4 +1,5 @@
-﻿namespace WebApp.Models
+﻿
+namespace WebApp.Models
 {
     public class MokeEmployeeRepository : IEmployeeRepository
     {
@@ -13,6 +14,12 @@
                 new Employee() { ID = 3, Name = "Zain", Department = "S/W", Email = "zainuk@gmail.com" }
             };
         }
+
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return _employeeList;
+        }
+
         public Employee GetEmployee(int id)
         {
             return _employeeList.FirstOrDefault(e => e.ID == id);
