@@ -25,9 +25,11 @@ namespace EmployeeMangement.Controllers
         {
             _employeeRepository = employeeRepository;
         }
-        public string Index()
+        public ViewResult Index()
         {
-            return _employeeRepository.GetEmployee(2).Name;
+
+            var model = _employeeRepository.GetAllEmployees();
+            return View(model);
 
         }
 
