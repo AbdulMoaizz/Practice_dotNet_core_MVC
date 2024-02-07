@@ -1,3 +1,4 @@
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Diagnostics;
@@ -33,9 +34,12 @@ namespace EmployeeMangement.Controllers
 
         public ViewResult Details()
         {
-            Employee model = _employeeRepository.GetEmployee(1);
-            ViewBag.PageTitle = "Employee Data";
-            return View(model);
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                Employee = _employeeRepository.GetEmployee(1),
+                PageTitle = "Employee Data"
+            };
+            return View(homeDetailsViewModel);
 
         }
     }
