@@ -44,16 +44,5 @@ namespace EmployeeMangement.Controllers
             return View(homeDetailsViewModel);
 
         }
-
-        public ViewResult DetailsDep()
-        {
-            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
-            {
-                Employee = (Employee)_employeeRepository.GetEmployeebyDep("AI"),
-                PageTitle = "Employee Data"
-            };
-            return View(homeDetailsViewModel);
-
-        }
     }
 }

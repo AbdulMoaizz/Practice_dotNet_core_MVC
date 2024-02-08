@@ -4,8 +4,5 @@
     {
         Employee GetEmployee(int id);
         IEnumerable<Employee> GetAllEmployees();
-
-        Employee GetEmployeebyDep(string dep);
-        IEnumerable<Employee> GetEmployeebyDep();
     }
 }
