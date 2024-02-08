@@ -1,5 +1,4 @@
-﻿
-namespace WebApp.Models
+﻿namespace WebApp.Models
 {
     public class MokeEmployeeRepository : IEmployeeRepository
     {
@@ -11,7 +10,13 @@ namespace WebApp.Models
             {
                 new Employee() { ID = 1, Name = "Moaiz", Department = "AI", Email = "moaizuk@gmail.com" },
                 new Employee() { ID = 2, Name = "Sarmad", Department = "ML", Email = "sarmaduk@gmail.com" },
-                new Employee() { ID = 3, Name = "Zain", Department = "S/W", Email = "zainuk@gmail.com" }
+                new Employee() { ID = 3, Name = "Zain", Department = "S/W", Email = "zainuk@gmail.com" },
+                new Employee() { ID = 1, Name = "Faisal", Department = "AI", Email = "faisaluk@gmail.com" },
+                new Employee() { ID = 2, Name = "Abbas", Department = "ML", Email = "abbasuk@gmail.com" },
+                new Employee() { ID = 3, Name = "Hassan", Department = "S/W", Email = "hassanuk@gmail.com" },
+                new Employee() { ID = 1, Name = "Ahmad", Department = "AI", Email = "ahmaduk@gmail.com" },
+                new Employee() { ID = 2, Name = "Aftab", Department = "ML", Email = "aftabuk@gmail.com" },
+                new Employee() { ID = 3, Name = "Sheri", Department = "S/W", Email = "sheriuk@gmail.com" }
             };
         }
 
@@ -23,6 +28,15 @@ namespace WebApp.Models
         public Employee GetEmployee(int id)
         {
             return _employeeList.FirstOrDefault(e => e.ID == id);
+        }
+        public IEnumerable<Employee> GetEmployeebyDep()
+        {
+            return _employeeList.Append(_employeeList.FirstOrDefault(e => e.Department == "AI"));
+        }
+
+        Employee IEmployeeRepository.GetEmployeebyDep(string dep)
+        {
+            return (Employee)_employeeList.Append(_employeeList.FirstOrDefault(e => e.Department == "AI"));
         }
     }
 }
