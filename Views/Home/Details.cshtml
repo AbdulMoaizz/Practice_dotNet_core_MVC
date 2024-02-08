@@ -1,15 +1,10 @@
 ﻿@model EmployeeManagement.ViewModels.HomeDetailsViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>
-    </title>
-</head>
-<body>
-    <h3>@Model.PageTitle</h3>
+@{
+    Layout = "~/Views/Shared/_EmpMagLatout.cshtml";
+    ViewBag.Title = "Employeee Details";
+}
 
     <Div>Name: @Model.Employee.Name</Div>
     <Div>Department: @Model.Employee.Department</Div>
     <Div>Email: @Model.Employee.Email</Div>
-
-</body>
-</html>
