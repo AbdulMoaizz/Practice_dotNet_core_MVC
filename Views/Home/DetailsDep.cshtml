@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<WebApp.Models.Employee>
 
+<html xmlns="http://www.w3.org/1999/xhtml>
+
 @{
     Layout = "~/Views/Shared/_EmpMngLayout.cshtml";
-    ViewBag.Title = "Employee List";
+    ViewBag.Title = "Details Departments";
 }
 
-<h3>Employee List</h3>
 <table>
     <thead>
         <tr>
@@ -16,7 +17,7 @@
     </thead>
     <tbody>
         @foreach (var employee in Model)
-        {
+            {
             <tr>
                 <td>@employee.Department</td>
                 <td>@employee.Name</td>
