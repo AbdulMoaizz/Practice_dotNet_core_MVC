@@ -29,14 +29,5 @@
         {
             return _employeeList.FirstOrDefault(e => e.ID == id);
         }
-        public IEnumerable<Employee> GetEmployeebyDep()
-        {
-            return _employeeList.Append(_employeeList.FirstOrDefault(e => e.Department == "AI"));
-        }
-
-        Employee IEmployeeRepository.GetEmployeebyDep(string dep)
-        {
-            return (Employee)_employeeList.Append(_employeeList.FirstOrDefault(e => e.Department == "AI"));
-        }
     }
 }
