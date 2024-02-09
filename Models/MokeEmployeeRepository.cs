@@ -25,6 +25,11 @@
             return _employeeList;
         }
 
+        public IEnumerable<Employee> GetDepEmployee(string dep)
+        {
+            return _employeeList.Where(e => e.Department == "ML");
+        }
+
         public Employee GetEmployee(int id)
         {
             return _employeeList.FirstOrDefault(e => e.ID == id);

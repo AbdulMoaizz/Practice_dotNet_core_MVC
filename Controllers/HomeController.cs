@@ -34,6 +34,12 @@ namespace EmployeeMangement.Controllers
 
         }
 
+        public ViewResult DepDetails(string dep)
+        {
+            var model = _employeeRepository.GetDepEmployee(dep);
+            return View(model);
+        }
+
         public ViewResult Details()
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
