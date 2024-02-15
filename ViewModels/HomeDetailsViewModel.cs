@@ -1,13 +1,13 @@
-﻿using WebApp.Models;
+﻿using EmployeeManagement.Models;
 
 namespace EmployeeManagement.ViewModels
 {
     public class HomeDetailsViewModel
     {
-        internal IEnumerable<Employee> employee;
+        internal IEnumerable<Employee>? employee;
 
-        public Employee Employee { get; set; }
-        public string PageTitle { get; set; }
+        public Employee? Employee { get; set; }
+        public string? PageTitle { get; set; }
     }
 }
     

@@ -1,4 +1,4 @@
-using WebApp.Models;
+using EmployeeManagement.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,12 +26,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-/*app.Run(async (context) =>
-{
-    //Console.WriteLine("Hello World");
-    await context.Response.WriteAsync("Hello World");
-});*/
 
 app.Run(); 
 
