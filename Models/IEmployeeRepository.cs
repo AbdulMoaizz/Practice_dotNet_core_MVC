@@ -1,4 +1,4 @@
-﻿namespace WebApp.Models
+﻿namespace EmployeeManagement.Models
 {
     public interface IEmployeeRepository
     {

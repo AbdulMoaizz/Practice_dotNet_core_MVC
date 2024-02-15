@@ -1,11 +1,10 @@
+using EmployeeManagement.Models;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Diagnostics;
-using WebApp.Models;
-using WebApplication1.Models;
 
-namespace EmployeeMangement.Controllers
+namespace EmployeeManagement.Controllers
 {
     public class HomeController : Controller
     {
@@ -40,11 +39,11 @@ namespace EmployeeMangement.Controllers
             return View(model);
         }
 
-        public ViewResult Details()
+        public ViewResult Details(int id)
         {
-            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            HomeDetailsViewModel homeDetailsViewModel = new()
             {
-                Employee = _employeeRepository.GetEmployee(1),
+                Employee = _employeeRepository.GetEmployee(id),
                 PageTitle = "Employee Data"
             };
             return View(homeDetailsViewModel);
