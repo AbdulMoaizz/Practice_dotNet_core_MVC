@@ -3,21 +3,22 @@
 @{
     ViewBag.Title = "Employeee Details";
 }
-<h3> Employee Details </h3>
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Employee Details</a>
+    </li>
+</ul>
 
 @if (Model.Employee != null)
 {
-    <div>
-        ID: @Model.Employee.Id
-    </div>
-    <div>
-        Name: @Model.Employee.Name
-    </div>
-    <div>
-        Department: @Model.Employee.Department
-    </div>
-    <div>
-        Email: @Model.Employee.Email
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/images.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Employee.Name</h2>
+            <h5 class="card-text">@Model.Employee.Department</h5>
+            <h5 class="card-text">@Model.Employee.Email</h5>
+            <a asp-controller="Home", asp-action="Index" class="btn btn-primary">Back</a>
+        </div>
     </div>
 }
 else
