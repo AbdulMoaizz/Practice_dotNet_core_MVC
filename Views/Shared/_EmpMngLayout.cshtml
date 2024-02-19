@@ -8,7 +8,6 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
-    <title>W3.CSS Template</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -28,22 +27,18 @@
         }
     </style>
 </head>
-<body class="w3-content" style="max-width:1200px">
+<body class="w3-content" style="max-width:1500px">
     <!-- Sidebar/menu -->
-    <div>
-        <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-            <div class="w3-container w3-display-container w3-padding-16">
-                <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-                <h3 class="w3-wide"><b>LOGO</b></h3>
-            </div>
-            <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-                <a asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button">Details
-
-                </a>
-            </div>
-        </nav>
-    </div>
-    <div class="container">
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+        <div class="w3-container w3-display-container w3-padding-16">
+            <a asp-controller="Home" asp-action="Dashboard" style="font-size: 30px; font-weight: bold; font-family:Arial; sans-serif; text-decoration: none;">Emp Mng</a>
+        </div>
+        <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+            <a asp-controller="Home" asp-action="Create" class="w3-bar-item w3-button">Create</a>
+            <a asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button">Employee List</a>
+        </div>
+    </nav>
+    <div class="container" style="margin-left:240px; margin-top:50px">
         @RenderBody()
     </div>
     @if(IsSectionDefined("Scripts"))
