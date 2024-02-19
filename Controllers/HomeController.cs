@@ -32,12 +32,14 @@ namespace EmployeeManagement.Controllers
             return View(model);
 
         }
-
+        public ViewResult Create()
+        {
+            return View();
+        }
         public ViewResult Dashboard()
         {
             return View();
         }
-
         public ViewResult DepDetails(string dep)
         {
             var model = _employeeRepository.GetDepEmployee(dep);
