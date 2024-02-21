@@ -32,10 +32,6 @@ namespace EmployeeManagement.Controllers
             return View(model);
 
         }
-        public ViewResult Create()
-        {
-            return View();
-        }
         public ViewResult Dashboard()
         {
             return View();
@@ -50,11 +46,26 @@ namespace EmployeeManagement.Controllers
         {
             HomeDetailsViewModel homeDetailsViewModel = new()
             {
-                Employee = _employeeRepository.GetEmployee(id),
-                PageTitle = "Employee Data"
+                Employee = _employeeRepository.GetEmployee(id)
             };
             return View(homeDetailsViewModel);
 
+        }
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee newEmployee = _employeeRepository.Add(employee);
+                return RedirectToAction("Details", new { id = newEmployee.Id });
+            }
+            return View();
         }
     }
 }
