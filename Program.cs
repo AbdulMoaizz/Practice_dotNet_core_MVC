@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IEmployeeRepository, MokeEmployeeRepository>();
+builder.Services.AddScoped<IEmployeeRepository, MokeEmployeeRepository>();
 
 var app = builder.Build();
 
