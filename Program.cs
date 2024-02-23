@@ -9,7 +9,7 @@ internal class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        builder.Services.AddScoped<IEmployeeRepository, MokeEmployeeRepository>();
+        builder.Services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
         builder.Services.AddDbContextPool<AppDbContext>(options =>
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeDBConnection"));
