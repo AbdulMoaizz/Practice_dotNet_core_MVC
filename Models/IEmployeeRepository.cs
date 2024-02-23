@@ -6,5 +6,7 @@
         IEnumerable<Employee> GetAllEmployees();
         IEnumerable<Employee> GetDepEmployee(string dep);
         Employee Add(Employee employee);
+        Employee Update(Employee employeeChanges);
+        Employee Delete(int id);
     }
 }
