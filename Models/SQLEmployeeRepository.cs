@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 namespace EmployeeManagement.Models
 {
     public class SQLEmployeeRepository : IEmployeeRepository
@@ -34,7 +36,9 @@ namespace EmployeeManagement.Models
 
         public IEnumerable<Employee> GetDepEmployee(string dep)
         {
-            return context.Employees;
+            return context.Employees
+                .AsNoTracking()
+                .Where(e => e.Department == Enum.Parse<Department>(dep));
         }
 
         public Employee GetEmployee(int id)

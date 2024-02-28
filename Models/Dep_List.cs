@@ -1,6 +1,6 @@
 ﻿namespace EmployeeManagement.Models
 {
-    public enum EnumDep
+    public enum Department
     {
         None,
         HR,
