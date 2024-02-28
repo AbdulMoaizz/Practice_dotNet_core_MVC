@@ -2,21 +2,20 @@
 
 namespace EmployeeManagement.Models
 {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+    public class AppDbContext: DbContext
     {
         public DbSet<Employee> Employees { get; set; }
 
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            modelBuilder.Entity<Employee>().HasData(
-                new Employee
-                {
-                    Id = 1,
-                    Name = "Mary",
-                    Department = EnumDep.IT,
-                    Email = "mary@gmail.com"
-                }
-                );
-        }*/
+            this.Database.Migrate();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //base.Database.EnsureCreated();
+            base.OnModelCreating(modelBuilder);
+
+        }
     }
 }
