@@ -65,5 +65,16 @@ namespace EmployeeManagement.Controllers
             }
             return View();
         }
+
+        public IActionResult Delete(int id)
+        {
+            Employee deletedEmployee = _employeeRepository.Delete(id);
+            if (deletedEmployee != null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View("EmployeeNotFound");
+        }
     }
 }
