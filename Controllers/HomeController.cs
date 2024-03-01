@@ -76,5 +76,24 @@ namespace EmployeeManagement.Controllers
 
             return View("EmployeeNotFound");
         }
+
+        [HttpGet]
+        public ViewResult Update(int id)
+        {
+            Employee employee = _employeeRepository.GetEmployee(id);
+            return View(employee);
+            
+        }
+
+        [HttpPost]
+        public IActionResult Update(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee updatedEmployee = _employeeRepository.Update(employee);
+                return RedirectToAction("Index");
+            }
+            return View(employee);
+        }
     }
 }
