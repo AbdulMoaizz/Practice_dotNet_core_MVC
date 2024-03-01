@@ -14,7 +14,8 @@
                     <div class="card-body">
                         <h2 class="card-title">@employee.Name</h2>
                         <a asp-controller="Home", asp-action="Details", asp-route-id="@employee.Id" class="btn btn-primary">Details</a>
-                        <a asp-controller="Home", asp-action="Delete", asp-route-id="@employee.Id" class="btn btn-primary">Delete</a>
+                        <a asp-controller="Home" , asp-action="Delete" , asp-route-id="@employee.Id" class="btn btn-primary">Delete</a>
+                        <a asp-controller="Home" , asp-action="Update" , asp-route-id="@employee.Id" class="btn btn-primary">Update</a>
                     </div>
                 </div>
             </div>
