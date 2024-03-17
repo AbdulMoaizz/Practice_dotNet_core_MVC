@@ -10,12 +10,5 @@ namespace EmployeeManagement.Models
         {
             this.Database.Migrate();
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //base.Database.EnsureCreated();
-            base.OnModelCreating(modelBuilder);
-
-        }
     }
 }
