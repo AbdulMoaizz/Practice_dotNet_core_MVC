@@ -1,14 +1,16 @@
 using EmployeeManagement.Models;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Diagnostics;
+using Microsoft.Extensions.Hosting.Internal;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace EmployeeManagement.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
         public IActionResult Privacy()
         {
@@ -21,9 +23,11 @@ namespace EmployeeManagement.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public HomeController(IEmployeeRepository employeeRepository)
+        public HomeController(IEmployeeRepository employeeRepository,
+            IHostingEnvironment hostingEnvironment)
         {
             _employeeRepository = employeeRepository;
+            _hostingEnvironment = hostingEnvironment;
         }
         public ViewResult Index()
         {
@@ -56,11 +60,27 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(EmployeeCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                Employee newEmployee = _employeeRepository.Add(employee);
+                string uniqueFileName = null;
+                if (model.Photo != null)
+                {
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.Photo.CopyTo(new FileStream(filePath,FileMode.Create));
+                }
+
+                Employee newEmployee = new Employee
+                {
+                    Name = model.Name,
+                    Department = model.Department,
+                    Email = model.Email,
+                    PhotoPath = uniqueFileName
+                };
+                _employeeRepository.Add(newEmployee);
                 return RedirectToAction("Details", new { id = newEmployee.Id });
             }
             return View();
@@ -68,13 +88,11 @@ namespace EmployeeManagement.Controllers
 
         public IActionResult Delete(int id)
         {
-            Employee deletedEmployee = _employeeRepository.Delete(id);
-            if (deletedEmployee != null)
+            _employeeRepository.Delete(id);
+            if (true)
             {
                 return RedirectToAction("Index");
             }
-
-            return View("EmployeeNotFound");
         }
 
         [HttpGet]
@@ -90,7 +108,7 @@ namespace EmployeeManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                Employee updatedEmployee = _employeeRepository.Update(employee);
+                _employeeRepository.Update(employee);
                 return RedirectToAction("Index");
             }
             return View(employee);
